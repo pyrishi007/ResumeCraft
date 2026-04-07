@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AuthForm from "./auth/Sign-in/SignIn";
+import AuthForm from "./auth/Sign-in/SignIn.jsx";
 import ProtectedRoutes from "./ProtectedRoutes.jsx";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Home from "./Components/Home/Home";

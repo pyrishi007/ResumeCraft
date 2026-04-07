@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
-    <section className="relative max-w-7xl mx-auto px-6 pt-24 pb-32 grid md:grid-cols-2 gap-12 items-center">
+    <section className=" max-w-7xl mx-auto px-6 pt-24 pb-32 grid md:grid-cols-2 gap-12 items-center">
+
       <div>
         <div className="border inline-block bg-linear-to-r from-blue-200 rounded-full px-4 py-1 text-blue-600 font-medium text-sm">
           🚀 Build resumes smarter, not harder
@@ -44,6 +45,7 @@ const HeroSection = () => {
         </div>
       </div>
 
+      {/* animation with design */}
       <div className="relative flex justify-center">
         <div className="bg-white shadow-2xl rounded-2xl p-6 w-80 rotate-3 hover:rotate-0 transition duration-500">
           <div className="space-y-3">
