@@ -25,9 +25,11 @@ const Header = () => {
 
       {isSignedIn ? (
         <div className="flex items-center gap-5">
-          <button className="text-gray-600 outline px-5 py-2 rounded-lg outline-gray-400 hover:text-gray-800 hover:outline-gray-500 hover:bg-blue-100 transition hover:cursor-pointer font-medium">
-            Dashboard
-          </button>
+          <Link to={"/dashboard"}>
+            <button className="text-gray-600 outline px-5 py-2 rounded-lg outline-gray-400 hover:text-gray-800 hover:outline-gray-500 hover:bg-blue-100 transition hover:cursor-pointer font-medium">
+              Dashboard
+            </button>
+          </Link>
           <UserButton />
         </div>
       ) : (
