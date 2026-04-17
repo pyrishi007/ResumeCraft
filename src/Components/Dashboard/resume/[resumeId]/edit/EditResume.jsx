@@ -1,11 +1,23 @@
-import React from 'react'
+import React from "react";
+import FormSection from "../../FormSection";
+import ResumePreview from "../../ResumePreview";
+import ResmeContextProvider from "@/context/ResmeContextProvider";
 
 const EditResume = () => {
   return (
-    <div>
-       <h1>U can edit ur resume here</h1>
-    </div>
-  )
-}
+    <div className=" min-h-screen">
+      <div className=" grid grid-cols-2 gap-10 p-10">
+        <ResmeContextProvider>
 
-export default EditResume
+          {/* Form Section */}
+          <FormSection />
+          
+          {/* Resume Section */}
+          <ResumePreview />
+        </ResmeContextProvider>
+      </div>
+    </div>
+  );
+};
+
+export default EditResume;

@@ -16,4 +16,5 @@ const axiosClient = axios.create({
 export const setUserValue = (data) => axiosClient.post("/user-resumes", data);
 
 //method - get data
-export const getUserData = (userEmail) => axiosClient.get("/user-resumes");
+export const getUserData = (userEmail) =>
+  axiosClient.get(`/user-resumes?filters[userEmail][$eq]=${userEmail}`);

@@ -18,9 +18,8 @@ const Dashboard = () => {
 
   //get user resume
   const userAllResume = () => {
-    getUserData({ emailAddress }).then((res) => {
+    getUserData(emailAddress).then((res) => {
       const userResumes = res?.data?.data || [];
-
       //set resume
       setResumes(userResumes);
     });
