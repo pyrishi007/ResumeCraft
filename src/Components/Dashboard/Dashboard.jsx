@@ -14,14 +14,18 @@ const Dashboard = () => {
   //runs userAllResume if user is there
   useEffect(() => {
     if (user) return userAllResume();
+   
   }, []);
 
   //get user resume
   const userAllResume = () => {
     getUserData(emailAddress).then((res) => {
       const userResumes = res?.data?.data || [];
+      console.log(userResumes);
+      
       //set resume
       setResumes(userResumes);
+      
     });
   };
 

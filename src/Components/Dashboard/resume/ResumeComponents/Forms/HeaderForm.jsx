@@ -1,15 +1,44 @@
 import { Input } from "@/Components/ui/input";
-import React from "react";
+import React, { useState } from "react";
+import { setResumeValue } from "../../../../../../service/GlobalAPI";
+import { useParams } from "react-router-dom";
+import { Button } from "@/Components/ui/button";
+import { ArrowRight, Circle, LoaderCircle } from "lucide-react";
 
 const HeaderForm = ({ data, setData }) => {
+  // state
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({});
+
+  // doucment ID
+  const params = useParams();
+
   //Handle Form data
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
+
+    // Current Form value
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
 
     setData({
       ...data,
       [name]: value,
+    });
+  };
+
+  const saveForm = () => {
+    setLoading(true);
+
+    const data = {
+      data: formData,
+    };
+
+    setResumeValue(params.resumeId, data).then((resp) => {
+      console.log(resp);
+      setLoading(false);
     });
   };
 
@@ -33,7 +62,7 @@ const HeaderForm = ({ data, setData }) => {
             <Input
               placeholder="John"
               name="firstName"
-              value={data?.firstName}
+              defaultValue={data?.firstName}
               className="form-input"
               onChange={handleChange}
             />
@@ -43,6 +72,7 @@ const HeaderForm = ({ data, setData }) => {
             <Input
               placeholder="Doe"
               name="lastName"
+              defaultValue={data?.lastName}
               className="form-input"
               onChange={handleChange}
             />
@@ -52,6 +82,7 @@ const HeaderForm = ({ data, setData }) => {
             <Input
               placeholder="Frontend Developer"
               name="jobTitle"
+              defaultValue={data?.jobTitle}
               className="form-input"
               onChange={handleChange}
             />
@@ -61,6 +92,7 @@ const HeaderForm = ({ data, setData }) => {
             <Input
               placeholder="Bangalore, India"
               name="address"
+              defaultValue={data?.address}
               className="form-input"
               onChange={handleChange}
             />
@@ -70,6 +102,7 @@ const HeaderForm = ({ data, setData }) => {
             <Input
               placeholder="+91 98765 43210"
               name="phone"
+              defaultValue={data?.phone}
               className="form-input"
               onChange={handleChange}
             />
@@ -79,10 +112,21 @@ const HeaderForm = ({ data, setData }) => {
             <Input
               placeholder="john.doe@email.com"
               name="email"
+              defaultValue={data?.email}
               className="form-input"
               onChange={handleChange}
             />
           </FormField>
+        </div>
+        <div className=" w-full mt-7 flex justify-end">
+          <button
+            onClick={saveForm}
+            className="flex items-center gap-2 px-5 py-2 rounded-lg 
+                        bg-[#1F6FEB] text-white font-semibold shadow-md text-xl 
+                        hover:bg-[#4DAAFF] transition"
+          >
+            {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
+          </button>
         </div>
       </div>
     </div>

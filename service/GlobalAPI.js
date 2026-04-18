@@ -19,6 +19,6 @@ export const setUserValue = (data) => axiosClient.post("/user-resumes", data);
 export const getUserData = (userEmail) =>
   axiosClient.get(`/user-resumes?filters[userEmail][$eq]=${userEmail}`);
 
-
-//Method - post Updated 
-export const setResumeValue = (data) => axiosClient.post(`/user-resume`)
+//Method - put Updated
+export const setResumeValue = (id, data) =>
+  axiosClient.put(`/user-resumes/${id}`, data);

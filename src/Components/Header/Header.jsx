@@ -6,7 +6,7 @@ import { UserButton } from "@clerk/react";
 
 const Header = () => {
   const { user, isSignedIn, isLoaded } = useUser();
-  console.log(isSignedIn);
+
 
   return (
     <header className="flex sticky items-center justify-between px-6 py-3 shadow bg-linear-to-r from-white to-blue-50">

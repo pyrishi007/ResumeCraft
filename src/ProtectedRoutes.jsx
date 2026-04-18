@@ -3,7 +3,7 @@ import Header from "./Components/Header/Header";
 import { useUser } from "@clerk/react";
 
 function ProtectedRoutes() {
-  console.log("hello");
+
   
   const { isLoaded, isSignedIn } = useUser();
 

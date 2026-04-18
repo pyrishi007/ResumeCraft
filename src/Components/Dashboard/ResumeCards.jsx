@@ -5,7 +5,7 @@ const ResumeCards = ({ resume }) => {
   console.log(resume);
 
   return (
-    <Link to={`/dashboard/resume/${resume.resumeid}/edit`}>
+    <Link to={`/dashboard/resume/${resume.documentId}/edit`}>
       <div
         className="group relative h-64 w-full max-w-sm rounded-2xl overflow-hidden
     bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-500

@@ -10,7 +10,6 @@ import CertificatePreview from "./ResumeComponents/Preview/CertificatePreview";
 const ResumePreview = () => {
   const { data, setData } = useContext(resumeContext);
 
-  console.log(data);
 
   return (
     <div className=" p-10 border shadow-md">
