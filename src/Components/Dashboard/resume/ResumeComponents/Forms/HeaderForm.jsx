@@ -2,8 +2,7 @@ import { Input } from "@/Components/ui/input";
 import React, { useState } from "react";
 import { setResumeValue } from "../../../../../../service/GlobalAPI";
 import { useParams } from "react-router-dom";
-import { Button } from "@/Components/ui/button";
-import { ArrowRight, Circle, LoaderCircle } from "lucide-react";
+import { LoaderCircle } from "lucide-react";
 
 const HeaderForm = ({ data, setData }) => {
   // state
@@ -23,6 +22,7 @@ const HeaderForm = ({ data, setData }) => {
       [name]: value,
     });
 
+    //Change mockData
     setData({
       ...data,
       [name]: value,
@@ -31,7 +31,15 @@ const HeaderForm = ({ data, setData }) => {
 
   const saveForm = () => {
     setLoading(true);
-
+    /*
+     Strapi expect data in this format
+     {
+      "data": {
+        "title": "Frontend Developer",
+        "skills": ["React", "Tailwind"]
+      }
+    }
+    */
     const data = {
       data: formData,
     };
