@@ -3,11 +3,17 @@ import { BrainCircuitIcon, CheckCircle2, LoaderCircle } from "lucide-react";
 import React, { useState } from "react";
 import { main } from "../../../../../../service/Groke";
 import { promptTemplate } from "@/utils/PROMPT";
+import { Button } from "@/Components/ui/button";
+import { setResumeValue } from "../../../../../../service/GlobalAPI";
+import { useParams } from "react-router-dom";
 
 const SummaryForm = ({ data, setData }) => {
   const [summery, setSummary] = useState("");
   const [loading, setLoading] = useState(false);
   const [groqResponse, setGroqResponse] = useState([]);
+  const param = useParams();
+
+  console.log(summery);
 
   // useEffect
   const AIsummery = async () => {
@@ -25,18 +31,32 @@ const SummaryForm = ({ data, setData }) => {
   const handleSummary = (e) => {
     const { name, value } = e.target;
 
+    //TO change the summary Area in real time
     setSummary({
       ...summery,
       [name]: value,
     });
 
-    console.log(name);
-
+    // Chamging mock dada
     setData({
       ...data,
       [name]: value,
+    });
+  };
 
-      
+  const saveForm = () => {
+    /*
+      data = {
+        data : {data}
+      }
+    */
+    const data = {
+      data: { summery },
+    };
+
+    //Setting  summary to backend
+    setResumeValue(param.resumeId, data).then((res) => {
+      console.log(res);
     });
   };
 
@@ -83,6 +103,18 @@ const SummaryForm = ({ data, setData }) => {
           onChange={handleSummary}
           className="mt-3 h-30"
         />
+
+        <div className=" w-full mt-7 flex justify-end">
+          <Button
+            disabled={!summery}
+            onClick={saveForm}
+            className="flex items-center gap-2 px-5 py-2 rounded-lg 
+                                  bg-[#1F6FEB] text-white font-semibold shadow-md text-xl 
+                                  hover:bg-[#4DAAFF] transition"
+          >
+            {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
+          </Button>
+        </div>
       </div>
 
       {groqResponse?.length > 0 && (
